@@ -72,8 +72,8 @@ public class UniMove : Manager<UniMove>
 				moves.Add(move);
 				
 				// Add our event listeners to catch when a button is pressed and released
-				move.OnPSMoveButtonPressed += HandleButtonPressed;
-				move.OnPSMoveButtonReleased += HandleButtonReleased;
+				//move.OnPSMoveButtonPressed += HandleButtonPressed;
+				//move.OnPSMoveButtonReleased += HandleButtonReleased;
 				move.OnControllerDisconnected += HandleControllerDisconnected;
 				
 				// Start all controllers with a white LED
@@ -117,11 +117,11 @@ public class UniMove : Manager<UniMove>
 			if (move.Disconnected) continue;
 			
 			// Change the colors of the LEDs based on which button has just been pressed:
-			if (move.IsButtonDown(PSMoveButton.Circle)) move.SetLED(Color.cyan);
-			else if(move.IsButtonDown(PSMoveButton.Cross)) move.SetLED(Color.red);
-			else if(move.IsButtonDown(PSMoveButton.Square)) move.SetLED(Color.yellow);
-			else if(move.IsButtonDown(PSMoveButton.Triangle)) move.SetLED(Color.magenta);
-			else if(move.IsButtonDown(PSMoveButton.Move)) move.SetLED(Color.black);
+			if (move.GetButtonDown(PSMoveButton.Circle)) move.SetLED(Color.cyan);
+			else if(move.GetButtonDown(PSMoveButton.Cross)) move.SetLED(Color.red);
+			else if(move.GetButtonDown(PSMoveButton.Square)) move.SetLED(Color.yellow);
+			else if(move.GetButtonDown(PSMoveButton.Triangle)) move.SetLED(Color.magenta);
+			else if(move.GetButtonDown(PSMoveButton.Move)) move.SetLED(Color.black);
 
 			// Set the rumble based on how much the trigger is down
 			move.SetRumble(move.Trigger);
